@@ -5,8 +5,12 @@ from rest_framework import status
 from .models import Task
 from .serializers import TaskSerializer
 
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
+
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def task_list(request):
 
     if request.method == 'GET':    
